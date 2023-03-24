@@ -10,6 +10,7 @@
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI.UI"
+    xmlns:controls1="using:CommunityToolkit.WinUI.UI.Controls"
     AutomationProperties.LandmarkType="Main"
     mc:Ignorable="d">
 
@@ -436,10 +437,32 @@
                                                                     ContentAlignment="Left"
                                                                     CornerRadius="0">
                                                                     <controls:CheckBoxWithDescriptionControl
+                                                                                    Margin="56,0,0,0"
+                                                                                    Description="{x:Bind Path=DisplayDescription}"
+                                                                                    Header="{x:Bind Path=DisplayLabel}"
+                                                                                    IsChecked="{x:Bind Path=Value, Mode=TwoWay}"/>
+                                                                </labs:SettingsCard>
+
+
+                                                                <labs:SettingsCard
+                                                                    Background="Transparent"
+                                                                    BorderThickness="0,0,0,0"
+                                                                    Padding="0,6,0,12"
+                                                                    Margin="1"
+                                                                    CornerRadius="0"
+                                                                    IsEnabled="{x:Bind Path=Value, Mode=OneWay}"
+                                                                    Visibility="{x:Bind Path=TextValueEnabled, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                                    <TextBox
+                                                                        MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                                                        MaxWidth="240"
+                                                                        VerticalAlignment="Center"
+                                                                        HorizontalAlignment="Right"
                                                                         Margin="56,0,0,0"
-                                                                        Description="{x:Bind Path=DisplayDescription}"
-                                                                        Header="{x:Bind Path=DisplayLabel}"
-                                                                        IsChecked="{x:Bind Path=Value, Mode=TwoWay}" />
+                                                                        IsSpellCheckEnabled="False"
+                                                                        IsTextPredictionEnabled="False"
+                                                                        Text="{x:Bind Path=TextValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                        IsEnabled="{x:Bind Path=Value, Mode=OneWay}"
+                                                                        Visibility="{x:Bind Path=TextValueEnabled, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                                 </labs:SettingsCard>
                                                                 <Rectangle
                                                                     Height="1"

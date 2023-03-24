@@ -6,6 +6,8 @@ using System.ComponentModel;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.Xaml.Interactivity;
 
 namespace Microsoft.PowerToys.Settings.UI.Controls
 {

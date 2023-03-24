@@ -70,6 +70,15 @@ namespace Microsoft.PowerToys.Run.Plugin.TimeDate.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date and time in custom format.
+        /// </summary>
+        internal static string Microsoft_plugin_timedate_custom {
+            get {
+                return ResourceManager.GetString("Microsoft_plugin_timedate_custom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         internal static string Microsoft_plugin_timedate_Date {
@@ -435,6 +444,24 @@ namespace Microsoft.PowerToys.Run.Plugin.TimeDate.Properties {
         internal static string Microsoft_plugin_timedate_Second {
             get {
                 return ResourceManager.GetString("Microsoft_plugin_timedate_Second", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some custom custom supertext.
+        /// </summary>
+        internal static string Microsoft_plugin_timedate_SettingCustomDateTimeFormat {
+            get {
+                return ResourceManager.GetString("Microsoft_plugin_timedate_SettingCustomDateTimeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set custom date and time format. E.g. &apos;yyyy_MM_dd-hh_mm_ss&apos; -&gt; &apos;2022_03_02-10_30_45&apos;.
+        /// </summary>
+        internal static string Microsoft_plugin_timedate_SettingCustomDateTimeFormat_Description {
+            get {
+                return ResourceManager.GetString("Microsoft_plugin_timedate_SettingCustomDateTimeFormat_Description", resourceCulture);
             }
         }
         

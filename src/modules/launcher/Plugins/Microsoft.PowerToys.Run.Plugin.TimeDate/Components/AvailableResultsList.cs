@@ -25,6 +25,8 @@ namespace Microsoft.PowerToys.Run.Plugin.TimeDate.Components
             List<AvailableResult> results = new List<AvailableResult>();
             bool timeExtended = timeLong ?? TimeDateSettings.Instance.TimeWithSeconds;
             bool dateExtended = dateLong ?? TimeDateSettings.Instance.DateWithWeekday;
+            bool customDateTimeFormatEnabled = TimeDateSettings.Instance.CustomDateTimeFormat;
+            string customDateTimeFormat = TimeDateSettings.Instance.CustomDateTimeFormatValue;
             bool isSystemDateTime = timestamp == null;
             Calendar calendar = CultureInfo.CurrentCulture.Calendar;
             DateTime dateTimeNow = timestamp ?? DateTime.Now;
@@ -264,6 +266,17 @@ namespace Microsoft.PowerToys.Run.Plugin.TimeDate.Components
                         IconType = ResultIconType.DateTime,
                     },
                 });
+                if (customDateTimeFormatEnabled)
+                {
+                    results.Add(
+                    new AvailableResult()
+                    {
+                        Value = dateTimeNow.ToString(customDateTimeFormat, CultureInfo.InvariantCulture),
+                        Label = Resources.Microsoft_plugin_timedate_custom,
+                        AlternativeSearchTag = ResultHelper.SelectStringFromResources(isSystemDateTime, "Microsoft_plugin_timedate_SearchTagFormat"),
+                        IconType = ResultIconType.DateTime,
+                    });
+                }
             }
 
             // Return only results where value is not empty

@@ -34,6 +34,21 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
             }
         }
 
+        public bool TextValueEnabled { get => _additionalOption.TextValueEnabled; }
+
+        public string TextValue
+        {
+            get => _additionalOption.TextValue;
+            set
+            {
+                if (value != _additionalOption.TextValue)
+                {
+                    _additionalOption.TextValue = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

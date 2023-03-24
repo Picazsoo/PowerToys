@@ -179,6 +179,10 @@
     <value>Date and time in filename-compatible format</value>
     <comment>The format allows for embedding in filenames</comment>
   </data>
+  <data name="Microsoft_plugin_timedate_custom" xml:space="preserve">
+    <value>Date and time in custom format</value>
+    <comment>The custom format can be set in plugin preferences</comment>
+  </data>
   <data name="Microsoft_plugin_timedate_Millisecond" xml:space="preserve">
     <value>Millisecond</value>
   </data>
@@ -267,6 +271,12 @@
   </data>
   <data name="Microsoft_plugin_timedate_SettingHideNumberMessageOnGlobalQuery" xml:space="preserve">
     <value>Hide 'Invalid number input' error message on global queries</value>
+  </data>
+  <data name="Microsoft_plugin_timedate_SettingCustomDateTimeFormat" xml:space="preserve">
+    <value>Some custom custom supertext</value>
+  </data>
+  <data name="Microsoft_plugin_timedate_SettingCustomDateTimeFormat_Description" xml:space="preserve">
+    <value>Set custom date and time format. E.g. 'yyyy_MM_dd-hh_mm_ss' -> '2022_03_02-10_30_45'</value>
   </data>
   <data name="Microsoft_plugin_timedate_SettingOnlyDateTimeNowGlobal" xml:space="preserve">
     <value>Show only 'Time', 'Date' and 'Now' result for system time on global queries</value>

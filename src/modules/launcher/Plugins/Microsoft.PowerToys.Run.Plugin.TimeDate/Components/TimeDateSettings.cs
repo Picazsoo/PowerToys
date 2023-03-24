@@ -2,6 +2,7 @@
 // The Microsoft Corporation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -47,6 +48,16 @@ namespace Microsoft.PowerToys.Run.Plugin.TimeDate.Components
         /// Gets a value indicating whether to hide the number input error message on global results
         /// </summary>
         internal bool HideNumberMessageOnGlobalQuery { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether to hide the number input error message on global results
+        /// </summary>
+        internal bool CustomDateTimeFormat { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether to hide the number input error message on global results
+        /// </summary>
+        internal string CustomDateTimeFormatValue { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeDateSettings"/> class.
@@ -114,6 +125,15 @@ namespace Microsoft.PowerToys.Run.Plugin.TimeDate.Components
                     DisplayLabel = Resources.Microsoft_plugin_timedate_SettingHideNumberMessageOnGlobalQuery,
                     Value = false,
                 },
+                new PluginAdditionalOption()
+                {
+                    Key = nameof(CustomDateTimeFormat),
+                    DisplayLabel = Resources.Microsoft_plugin_timedate_SettingCustomDateTimeFormat,
+                    DisplayDescription = Resources.Microsoft_plugin_timedate_SettingCustomDateTimeFormat_Description,
+                    Value = false,
+                    TextValueEnabled = true,
+                    TextValue = "yyyy_MM_dd-hh_mm_ss",
+                },
             };
 
             return optionList;
@@ -134,6 +154,8 @@ namespace Microsoft.PowerToys.Run.Plugin.TimeDate.Components
             TimeWithSeconds = GetSettingOrDefault(settings, nameof(TimeWithSeconds));
             DateWithWeekday = GetSettingOrDefault(settings, nameof(DateWithWeekday));
             HideNumberMessageOnGlobalQuery = GetSettingOrDefault(settings, nameof(HideNumberMessageOnGlobalQuery));
+            CustomDateTimeFormat = GetSettingOrDefault(settings, nameof(CustomDateTimeFormat));
+            CustomDateTimeFormatValue = GetSettingValueOrDefault(settings, nameof(CustomDateTimeFormat));
         }
 
         /// <summary>
@@ -149,6 +171,21 @@ namespace Microsoft.PowerToys.Run.Plugin.TimeDate.Components
             // If a setting isn't available, we use the value defined in the method GetAdditionalOptions() as fallback.
             // We can use First() instead of FirstOrDefault() because the values must exist. Otherwise, we made a mistake when defining the settings.
             return option?.Value ?? GetAdditionalOptions().First(x => x.Key == name).Value;
+        }
+
+        /// <summary>
+        /// Return one <see cref="bool"/> setting of the given settings list with the given name.
+        /// </summary>
+        /// <param name="settings">The object that contain all settings.</param>
+        /// <param name="name">The name of the setting.</param>
+        /// <returns>A settings value.</returns>
+        private static string GetSettingValueOrDefault(PowerLauncherPluginSettings settings, string name)
+        {
+            var option = settings?.AdditionalOptions?.FirstOrDefault(x => x.Key == name);
+
+            // If a setting isn't available, we use the value defined in the method GetAdditionalOptions() as fallback.
+            // We can use First() instead of FirstOrDefault() because the values must exist. Otherwise, we made a mistake when defining the settings.
+            return option?.TextValue ?? GetAdditionalOptions().First(x => x.Key == name).TextValue;
         }
     }
 }

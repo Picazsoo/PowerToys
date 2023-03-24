@@ -16,5 +16,9 @@ namespace Microsoft.PowerToys.Settings.UI.Library
         public string DisplayDescription { get; set; }
 
         public bool Value { get; set; }
+
+        public bool TextValueEnabled { get; set; }
+
+        public string TextValue { get; set; }
     }
 }
